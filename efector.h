@@ -13,7 +13,6 @@ template<typename T>
 class efector{
 public:
 	T field;
-
 	static int counter;
 	efector(element<T> * arg){
 		field=arg->space;
@@ -65,14 +64,12 @@ ostream& operator<<(ostream&as, naglowki<T>&kl){
         as.width(11);
         as << " ";
         as.setf(ios_base::left);
-        as << "size";
-
+        as << "Size";
         return as << endl;
 }template<typename T>class line{
 public:
         T pole;
-        line(){
-        }
+        line(){}
 };
 template<typename T>
 ostream& operator<<(ostream&as, line<T>&kl){
