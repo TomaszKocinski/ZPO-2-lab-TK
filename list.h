@@ -2,6 +2,7 @@
 #define list_h
 #include "element.h"
 #include "efector.h"
+#include "zespolone.h"
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -83,10 +84,12 @@ public:
 		ofstream myfile(name);
 		if (myfile.is_open())
 		{
-
+			element<T> * current=head;
+			element<T> temp;
 			time_t rawtime;
 			struct tm * timeinfo;
 			char buffer [80];
+			
 			time ( &rawtime );
 			timeinfo = localtime ( &rawtime );
 			strftime (buffer,80,"Warsaw, %d.%m.%Y",timeinfo);
@@ -94,15 +97,17 @@ public:
 			myfile<<_data<<buffer<<_normalflags<<endl;
 			myfile<<_title<<"Cake is a lie"<<_normalflags<<endl;
 			
-		
-
-				element<T> * current=head; 
+			myfile<<naglowki<T>();
+			myfile<<line<T>();
 			while(current!=NULL){
 				myfile <<efector<T>(current);
+				temp+=current->space;
 				current=current->next;
+				
 			}
-			myfile<<endl;
-
+			myfile<<line<T>();
+			myfile<<sefe<T>(temp);
+			
 
 
 			myfile.close();

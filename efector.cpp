@@ -17,10 +17,6 @@ return str;
 }
 
 
-
-
-
-
 ostream& _normalflags(ostream& str){
 	str.flags(flagi_domyslne);
 return str;

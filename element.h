@@ -10,8 +10,8 @@ public:
 		next=NULL;
 	}
 	element(T arg){
-		nap=arg;
-		next=NULL:
+		space=arg;
+		next=NULL;
 	}
 	~element(){
 	 delete next;
