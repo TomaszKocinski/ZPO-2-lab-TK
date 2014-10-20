@@ -1,0 +1,129 @@
+#ifndef list_h
+#define list_h
+#include "element.h"
+#include "efector.h"
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <ctime>
+#include <iomanip>
+using namespace std;
+template<typename T>
+class list{
+public:
+	element<T>* head;
+	list(){
+		head=NULL;
+	}
+	~list(){
+		delete head;
+	}
+	void insert(T arg){
+		element<T> * newone=new element<T>;
+		element<T> * current=head;
+		newone->space=arg;
+		bool check=false;
+		if(head==NULL){
+			head=newone;
+		}
+		else{
+			if(newone->space==current->space){
+				delete newone;
+				check=true;
+			}
+			while(current->next!=NULL){
+				if(check==false && newone->space==current->space) {
+					delete newone;
+					check=true;
+				}
+				current=current->next;
+			}
+			if(check==false) current->next=newone;
+		}
+	}
+	void remove(T arg){
+		element<T> * current=head;
+		if(current!=NULL && arg==current->space){
+			head=head->next;
+			current->next=NULL;
+			delete current;
+		}
+		else if(current!=NULL){
+			while(current->next!=NULL && arg!=current->next->space){
+				current=current->next;
+			}
+
+			if(current->next!=NULL && arg==current->next->space && current->next!=NULL){
+				element<T> * todele=current->next;
+				current->next=current->next->next;
+				todele->next=NULL;
+				delete todele;
+			}
+			else if(current->next!=NULL && arg==current->next->space && current->next==NULL){
+				element<T> * todele=current->next;
+				current->next=NULL;
+				todele->next=NULL;
+				delete todele;
+			}
+		}
+	}
+	void show(){
+		element<T> *current=head;
+		while(current!=NULL){
+			cout<<current->space<<' ';
+			current=current->next;
+		}
+		cout<<'\n';
+	}
+	void file(){
+		cout<<"hey, write a name for a file where you want to save your list\n";
+		string name;
+		cin>>name;
+		ofstream myfile(name);
+		if (myfile.is_open())
+		{
+
+			time_t rawtime;
+			struct tm * timeinfo;
+			char buffer [80];
+			time ( &rawtime );
+			timeinfo = localtime ( &rawtime );
+			strftime (buffer,80,"Warsaw, %d.%m.%Y",timeinfo);
+			myfile.setf(ios_base::right);
+			myfile.width(66);
+			myfile.fill(' ');
+			myfile<< buffer<<endl;
+			myfile.unsetf(ios_base::right);
+			myfile.setf(ios_base::internal);
+			myfile.width(35);
+			myfile<<"Cake is a lie"<<endl;
+			myfile.unsetf(ios_base::internal);
+			
+		
+
+				element<T> * current=head; 
+			while(current!=NULL){
+				myfile <<efector<T>(current);
+				current=current->next;
+			}
+			myfile<<endl;
+
+
+
+			myfile.close();
+		}
+		else cout << "Unable to open file";
+
+	}
+};
+template<typename T>
+ostream&operator<<(ostream & out,list<T>* arg){
+	element<T>* current=arg->head; 
+	while(current!=NULL){
+		out<<current->space<<' ';
+		current=current->next;
+	}
+	out<<'\n';
+	return out;
+}
+#endif
