@@ -13,6 +13,10 @@ void zesp::operator=(const zesp &arg){
 	rz=arg.rz;
 	uro=arg.uro;
 }
+void zesp::operator+=(const zesp &arg){
+	rz+=arg.rz;
+	uro+=arg.uro;
+}
 ostream& operator<<(ostream& out,zesp& arg){
 	return out<<arg.rz<<'+'<<arg.uro<<"i";
 }

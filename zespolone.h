@@ -10,6 +10,7 @@ public:
 	zesp(int a, int b){ rz=a;uro=b;}
 	bool operator==(const zesp &arg);
 	bool operator!=(const zesp &arg);
+	void operator+=(const zesp &arg);
 	void operator=(const zesp &arg);
 	friend ostream& operator<<(ostream& out,zesp& arg);
 	friend istream& operator>>(istream& out,zesp& arg);

@@ -1,10 +1,14 @@
 #ifndef efector_h
 #define efector_h
+#pragma once
 #include "element.h"
 #include "list.h"
 #include <iostream>
 #include <string>
 using namespace std;
+ostream& _normalflags(ostream&);
+ostream& _data(ostream&);
+ostream& _title(ostream&);
 template<typename T>
 class efector{
 	public:
@@ -14,7 +18,6 @@ class efector{
 	efector(element<T> * arg){
 		field=arg->space;
 	}
-	
 };
 template<typename T>
 int efector<T>::counter=1;
@@ -38,13 +41,22 @@ template<typename T>
 class sefe{
 	public:
 	T field;
+	sefe *next;
 	sefe(element<T> * arg){
 		field=arg->space;
+		next=arg->next;
 	}
 };
 template<typename T>
 ostream& operator<<(ostream& os,sefe<T>& fw) {
-	os.width(14;)
-	return os<<endl;
+	os.width(15)
+		sefe<T> *current=fw;
+		<T> temp(0);
+		while(current!ss=NULL){
+			field+=fw.field
+			current=current->next;
+		}
+	return os<<arg;
 }
+
 #endif

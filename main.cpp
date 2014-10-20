@@ -1,10 +1,11 @@
 #include <iostream>
 #include <string>
 #include "list.h"
-#include "element.h"
+
 #include "zespolone.h"
-#include "efector.h"
+
 using namespace std;
+
 int main(void){
 	list<zesp>* A=new list<zesp>; 
 	

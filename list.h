@@ -8,6 +8,7 @@
 #include <ctime>
 #include <iomanip>
 using namespace std;
+
 template<typename T>
 class list{
 public:
@@ -89,15 +90,9 @@ public:
 			time ( &rawtime );
 			timeinfo = localtime ( &rawtime );
 			strftime (buffer,80,"Warsaw, %d.%m.%Y",timeinfo);
-			myfile.setf(ios_base::right);
-			myfile.width(66);
-			myfile.fill(' ');
-			myfile<< buffer<<endl;
-			myfile.unsetf(ios_base::right);
-			myfile.setf(ios_base::internal);
-			myfile.width(35);
-			myfile<<"Cake is a lie"<<endl;
-			myfile.unsetf(ios_base::internal);
+			
+			myfile<<_data<<buffer<<_normalflags<<endl;
+			myfile<<_title<<"Cake is a lie"<<_normalflags<<endl;
 			
 		
 
@@ -126,4 +121,5 @@ ostream&operator<<(ostream & out,list<T>* arg){
 	out<<'\n';
 	return out;
 }
+
 #endif
