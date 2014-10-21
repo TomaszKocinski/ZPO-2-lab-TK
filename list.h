@@ -95,17 +95,16 @@ public:
 			strftime (buffer,80,"Warsaw, %d.%m.%Y",timeinfo);
 			
 			myfile<<_data<<buffer<<_normalflags<<endl;
-			myfile<<_title<<"Cake is a lie"<<_normalflags<<endl;
+			
 			
 			myfile<<naglowki<T>();
-			myfile<<line<T>();
+			myfile<<line<T>(temp);
 			while(current!=NULL){
 				myfile <<efector<T>(current);
 				temp+=current->space;
 				current=current->next;
-				
 			}
-			myfile<<line<T>();
+			myfile<<line<T>(temp);
 			myfile<<sefe<T>(temp);
 			
 
@@ -126,5 +125,6 @@ ostream&operator<<(ostream & out,list<T>* arg){
 	out<<'\n';
 	return out;
 }
-
+
+
 #endif

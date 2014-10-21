@@ -19,12 +19,6 @@ public:
 	}
 	void operator+=(const element<T> &arg){
 		space+=arg.space;
-		/*element<T> *current=this;
-		while(current!=NULL){
-			arg
-			current=current->next;
-		}
-		cout<<'\n';*/
 	}
 };
 #endif

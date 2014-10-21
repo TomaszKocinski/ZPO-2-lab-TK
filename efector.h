@@ -3,6 +3,8 @@
 #pragma once
 #include "element.h"
 #include "list.h"
+#include "zespolone.h"
+#include "apple.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -20,20 +22,12 @@ public:
 };
 template<typename T>
 int efector<T>::counter=1;
-template<typename T>
-ostream& operator<<(ostream& os,efector<T>& fw) {
-	os.setf(ios_base::right);
-	os.width(3);
-	os << fw.counter++;
-	os.unsetf(ios_base::right);
-	os.width(2);
-	os << '.';
-	os.setf(ios_base::right);
-	os.width(10);
-	os << fw.field;
-	os.unsetf(ios_base::right);
-	return os<<endl;
-}
+
+ostream& operator<<(ostream& os,efector<zesp>& fw);
+ostream& operator<<(ostream& os,efector<apple>& fw);
+
+
+
 template<typename T>
 class sefe{
 public:
@@ -42,13 +36,12 @@ public:
 		field=arg.space;
 	}
 };
-template<typename T>
-ostream& operator<<(ostream& os,sefe<T>& fw) {
-	os.width(15);
-	os.setf(ios_base::right);
-	os<<fw.field;
-	return os;
-}
+
+ostream& operator<<(ostream& os,sefe<zesp>& fw);
+ostream& operator<<(ostream& os,sefe<apple>& fw);
+
+
+
 template<typename T>
 class naglowki{
 public:
@@ -56,20 +49,17 @@ public:
         naglowki(){
         }
 };
+
+ostream& operator<<(ostream&as, naglowki<zesp>&kl);
+ostream& operator<<(ostream&as, naglowki<apple>&kl);
+
+
+
+
 template<typename T>
-ostream& operator<<(ostream&as, naglowki<T>&kl){
-        as.setf(ios_base::left);
-        as << "Lp.";
-        as.unsetf(ios_base::left);
-        as.width(11);
-        as << " ";
-        as.setf(ios_base::left);
-        as << "Size";
-        return as << endl;
-}template<typename T>class line{
+class line{
 public:
-        T pole;
-        line(){}
+        line(element<T>){}
 };
 template<typename T>
 ostream& operator<<(ostream&as, line<T>&kl){
